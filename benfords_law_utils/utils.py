@@ -3,8 +3,7 @@ import math
 
 def calculate_benford_stats(numerical_data):
     first_digit_index = 0
-    first_digits = list(map(
-        lambda number: int(str(number)[first_digit_index]), numerical_data))
+    first_digits = list(map(lambda number: int(str(number)[first_digit_index]), numerical_data))
 
     total_count = 0
     empirical_counts = [0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -25,8 +24,7 @@ def ascii_art_bar_graph(ratios, max_width):
 
     max_value = max(ratios)
 
-    benford_ratios = [0.30103, 0.176091, 0.124939, 0.09691, 0.0791812,
-                      0.0669468, 0.0579919, 0.0511525, 0.0457575]
+    benford_ratios = [0.30103, 0.176091, 0.124939, 0.09691, 0.0791812, 0.0669468, 0.0579919, 0.0511525, 0.0457575]
 
     if benford_ratios[0] > max_value:
         max_value = benford_ratios[0]

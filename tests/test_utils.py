@@ -19,9 +19,7 @@ def test_calculate_benford_stats_for_single_input():
 
 
 def test_calculate_benford_stats_for_uniform_input():
-    counts, ratios, total_count = calculate_benford_stats(
-        [111, 222, 333, 444, 555, 666, 777, 888, 999]
-    )
+    counts, ratios, total_count = calculate_benford_stats([111, 222, 333, 444, 555, 666, 777, 888, 999])
     assert(total_count) == 9
     expected_ratio = 1 / 9
     assert(ratios) == [expected_ratio] * 9
@@ -29,18 +27,14 @@ def test_calculate_benford_stats_for_uniform_input():
 
 
 def test_calculate_benford_stats_for_simple_input():
-    counts, ratios, total_count = calculate_benford_stats(
-        [111, 3000, 701234, 8675309, 8888]
-    )
+    counts, ratios, total_count = calculate_benford_stats([111, 3000, 701234, 8675309, 8888])
     assert(total_count) == 5
     assert(ratios) == [.2, 0, .2, 0, 0, 0, .2, .4, 0]
     assert(counts) == [1, 0, 1, 0, 0, 0, 1, 2, 0]
 
 
 def test_ascii_art_bar_graph():
-    _, ratios, __ = calculate_benford_stats(
-        [111, 3000, 701234, 8675309, 8888]
-    )
+    _, ratios, __ = calculate_benford_stats([111, 3000, 701234, 8675309, 8888])
     bar_graph = ascii_art_bar_graph(ratios, 20)
     assert(bar_graph) == """**********             Leading 1 Ratio: 20.000%
                ^       Expected Ratio:  30.103%
