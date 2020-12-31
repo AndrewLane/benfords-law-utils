@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="benfords-law-utils",
-    version="0.0.1",
+    version="0.0.2",
     author="Andrew Lane",
     author_email="andrew.w.lane@gmail.com",
     description="Utilities for exploring Benford's Law",
