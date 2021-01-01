@@ -1,5 +1,7 @@
 import math
 
+from PIL import Image
+
 
 def calculate_benford_stats(numerical_data):
     first_digit_index = 0
@@ -52,3 +54,18 @@ def ascii_art_bar_graph(ratios, max_width):
 def format_ratio(ratio):
     percentage = ratio * 100
     return f"{percentage:3.3f}%"
+
+
+def calculate_benford_stats_for_image(image_path):
+    with Image.open(image_path) as im:
+        pixels_array = get_pixel_values(im)
+        return calculate_benford_stats(pixels_array)
+
+
+def get_pixel_values(im):
+    width, height = im.size
+    px = im.load()
+    for x in range(width):
+        for y in range(height):
+            pixel = px[x, y]
+            yield (pixel[0] + 1) * (pixel[1] + 1) * (pixel[2] + 1)
