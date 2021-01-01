@@ -4,7 +4,7 @@ import os
 
 from PIL import Image
 from benfords_law_utils.utils import calculate_benford_stats, ascii_art_bar_graph, calculate_benford_stats_for_image, \
-                                     get_pixel_values
+    get_pixel_values
 
 
 def test_calculate_benford_stats_for_empty_input():
@@ -85,8 +85,8 @@ def test_calculate_benford_stats_for_image_simple_2x2():
                                   13060672,  # 248 * 227 * 232
                                   4928,  # 16 * 11 * 28
                                   1533840,  # 240 * 77 * 83
-                              ]
-                              )
+    ]
+    )
 
 
 def test_calculate_benford_stats_for_image_for_real_image():
