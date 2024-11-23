@@ -22,17 +22,17 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: autopep8
-      if: matrix.python-version == 3.8
+      if: matrix.python-version == 3.13
       id: autopep8
       uses: peter-evans/autopep8@v2
       with:
         args: --exit-code --recursive --global-config .pycodestyle --in-place .
     - name: Set autopep8 branch name
-      if: matrix.python-version == 3.8
+      if: matrix.python-version == 3.13
       id: autopep8vars
       run: echo ::set-output name=branch-name::"autopep8-patches/${{ github.head_ref }}"
     - name: Create Pull Request if autopep8 found something
-      if: matrix.python-version == 3.8 && steps.autopep8.outputs.exit-code == 2
+      if: matrix.python-version == 3.13 && steps.autopep8.outputs.exit-code == 2
       uses: peter-evans/create-pull-request@v7
       with:
         commit-message: autopep8 action fixes
@@ -55,7 +55,7 @@ jobs:
         python -m pytest --cov=./benfords_law_utils/ --cov-report=xml
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v4
-      if: matrix.python-version == 3.8
+      if: matrix.python-version == 3.13
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         file: ./coverage.xml
