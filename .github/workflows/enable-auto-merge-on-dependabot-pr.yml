@@ -15,6 +15,12 @@ jobs:
         uses: dependabot/fetch-metadata@v2.5.0
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Inform when not auto-merging
+        if: ${{ steps.metadata.outputs.update-type != 'version-update:semver-patch' && steps.metadata.outputs.update-type != 'version-update:semver-minor' }}
+        run: |
+          echo "Not auto-merging Dependabot PR: update-type is '${{ steps.metadata.outputs.update-type }}'"
+
       - name: Enable auto-merge for Dependabot PRs
         if: ${{ steps.metadata.outputs.update-type == 'version-update:semver-patch' || steps.metadata.outputs.update-type == 'version-update:semver-minor' }}
         run: gh pr merge --auto --merge "$PR_URL"
